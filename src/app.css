@@ -11,8 +11,14 @@ body{
 
 }
 
-.ResCard{
+.Sfbutton{
+    /* border: 1px solid red; */
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
 
+.ResCard{
     display: flex;
     flex-wrap: wrap;
     padding: 2% 10%;
