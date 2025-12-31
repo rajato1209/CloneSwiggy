@@ -1,14 +1,13 @@
 import Header from "../src/components/Header"
 import Footer from "./components/Footer"
-import Body from "./components/Body"
+import { Outlet } from "react-router-dom";
 import './app.css'
 function App() {
 
   return (
     <>
      <Header/>
-     <Body/>
-
+     <Outlet/>
      <Footer/>
     </>
   )

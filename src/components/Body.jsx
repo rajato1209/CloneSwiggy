@@ -11,7 +11,7 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.97210&lng=72.82460"
     );
     let res = await data.json();
-    console.log(res);
+    // console.log(res);
     setResList(
       res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
@@ -32,13 +32,14 @@ const Body = () => {
     // console.log("search data:",data)
     setFilterData(data)
   };
-
   return (
     <>
       <div className="Sfbutton">
+        {/* top rated restro */}
         <div>
-          <button style={{ marginLeft: "16%" }}>Top Rated Restaurants</button>
+          <button style={{ marginLeft: "16%" }} onClick={()=>setFilterData(resList.filter((el)=>Number(el?.info?.avgRating)> 4.2))}>Top Rated Restaurants</button>
         </div>
+        {/* search box */}
         <div className="search-box">
           <input type="text" value={search} onChange={(e)=>setSearch(e.target.value)} />
           <button onClick={handleSearch}>Search</button>
