@@ -11,7 +11,7 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.97210&lng=72.82460"
     );
     let res = await data.json();
-    // console.log(res);
+    console.log(res);
     setResList(
       res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
@@ -34,23 +34,29 @@ const Body = () => {
   };
   return (
     <>
-      <div className="Sfbutton">
+   
+      <div className="flex bg-gray-100 py-2 px-1 m-1 gap-3">
         {/* top rated restro */}
-        <div>
-          <button style={{ marginLeft: "16%" }} onClick={()=>setFilterData(resList.filter((el)=>Number(el?.info?.avgRating)> 4.2))}>Top Rated Restaurants</button>
+        <div >
+          <button className="align-middle border-2 rounded leading-none" style={{ marginLeft: "16%" }} onClick={()=>setFilterData(resList.filter((el)=>Number(el?.info?.avgRating)> 4.2))}>Top Rated Restaurants</button>
         </div>
         {/* search box */}
-        <div className="search-box">
-          <input type="text" value={search} onChange={(e)=>setSearch(e.target.value)} />
-          <button onClick={handleSearch}>Search</button>
+        <div className="flex gap-2 ">
+          <input className="border-2 rounded p-1 " type="text" value={search} onChange={(e)=>setSearch(e.target.value)} />
+          <button className="border-2 rounded-sm px-2" onClick={handleSearch}>Search</button>
         </div>
       </div>
 
+       <div className="opacity-90 bg-[url(.\assets\texturedbg.jpg)] ">
+
       {/* restro card */}
-      <div className="ResCard">
+      <h1 className="mx-20 my-4 text-4xl">Recomonded Resturants</h1>
+      <div className="grid grid-cols-4 gap-6 p-4 mx-20 my-10 ">
+        
         {filterData.map((el) => (
           <RestroCards key={el.info.id} resData={el} />
         ))}
+      </div>
       </div>
     </>
   );
