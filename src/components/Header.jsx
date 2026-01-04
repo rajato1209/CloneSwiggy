@@ -30,7 +30,7 @@ const Header = () => {
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact" >Contact</Link></li>
             <li>
-              <input type="text" for="usearch" placeholder="Search" />
+              <input type="text" placeholder="Search" />
             </li>
           </ul>
         </div>

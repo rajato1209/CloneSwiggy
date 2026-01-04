@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {Link} from "react-router-dom"
 import RestroCards from "./RestroCards";
 
 const Body = () => {
@@ -11,7 +12,7 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.97210&lng=72.82460"
     );
     let res = await data.json();
-    console.log(res);
+    // console.log(res);
     setResList(
       res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
@@ -54,7 +55,9 @@ const Body = () => {
       <div className="grid grid-cols-4 gap-6 p-4 mx-20 my-10 ">
         
         {filterData.map((el) => (
+          <Link to={"/restaurant/"+ el?.info.id} key={""}>
           <RestroCards key={el.info.id} resData={el} />
+          </Link>
         ))}
       </div>
       </div>

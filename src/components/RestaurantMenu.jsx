@@ -1,14 +1,15 @@
-import { useEffect } from "react"
+import { useParams } from "react-router-dom";
+import useRestrauntMenu from "../utils/useRestrauntMenu"
+
 
 const RestaurantMenu=()=>{
 
-    useEffect(()=>{
-        fetchData();
-    })
+    const resId=useParams();
+    
+    const data=useRestrauntMenu(resId);
+    // console.log("Restraunt menu data",data) 
 
-    const fetchData=async()=>{
-        
-    }
+    
 
     return(
         <>
