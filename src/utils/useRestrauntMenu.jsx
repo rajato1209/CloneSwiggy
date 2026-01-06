@@ -5,16 +5,19 @@ const useRestrauntMenu = (resId) => {
   
   // fetch data
   useEffect(() => {
-    if(resId) fetchData();
+     fetchData();
   }, [resId]);
 
   const fetchData = async () => {
-    
+          console.log(resId)
           let data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=" + resId);
-          console.log(data)
+          // console.log("response data",data)
+
+          let res=await data.text();
+          // console.log("text data of response: ",res);
     
-    // let ndata = await data.json();
-     console.log("data with json: ",ndata)
+    let ndata = await data.json();
+    //  console.log("data with json: ",ndata)
 
     setResData(ndata);
   };

@@ -5,8 +5,9 @@ import useRestrauntMenu from "../utils/useRestrauntMenu"
 const RestaurantMenu=()=>{
 
     const resId=useParams();
+    console.log("restro id as obj: ",resId.id)
     
-    const data=useRestrauntMenu(resId);
+    const data=useRestrauntMenu(resId.id);
     // console.log("Restraunt menu data",data) 
 
     
