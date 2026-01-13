@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Link} from "react-router-dom"
 import RestroCards from "./RestroCards";
+import RestroPromoted from "./RestroPromoted";
 
 const Body = () => {
   let [resList, setResList] = useState([]);
@@ -12,14 +13,14 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.97210&lng=72.82460"
     );
     let res = await data.json();
-    // console.log(res);
     setResList(
       res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
+
     setFilterData(
       res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
-  };
+  }; 
   useEffect(() => {
     fetchData();
   }, []);
@@ -53,10 +54,11 @@ const Body = () => {
       {/* restro card */}
       <h1 className="mx-20 my-4 text-4xl">Recomonded Resturants</h1>
       <div className="grid grid-cols-4 gap-6 p-4 mx-20 my-10 ">
-        
+         {/* {console.log("promoted data:", filterData)} */}
         {filterData.map((el) => (
           <Link to={"/restaurant/"+ el?.info.id} key={""}>
-          <RestroCards key={el.info.id} resData={el} />
+            {el.info.promoted?<RestroPromoted key={el.info.id} resData={el} />:<RestroCards key={el.info.id} resData={el} />}
+          
           </Link>
         ))}
       </div>
