@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {Link} from "react-router-dom"
 import RestroCards from "./RestroCards";
 import RestroPromoted from "./RestroPromoted";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   let [resList, setResList] = useState([]);
@@ -9,6 +10,7 @@ const Body = () => {
   let [search, setSearch] = useState("");
 
   const fetchData = async () => {
+    
     let data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.97210&lng=72.82460"
     );
@@ -26,7 +28,8 @@ const Body = () => {
   }, []);
 
   if (resList.length === 0) {
-    return <h1>Loading... </h1>;
+    // return <h1>Loading... </h1>;
+    return<Shimmer/>
   }
 
   const handleSearch = () => {
